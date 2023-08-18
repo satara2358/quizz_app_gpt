@@ -12,7 +12,7 @@ import {
 import UserAvatar from "./UserAvatar";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-// import { LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 
 type Props = {
   user: Pick<User, "name" | "image" | "email">;
@@ -47,15 +47,15 @@ const UserAccountNav = ({ user }: Props) => {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem
-          onSelect={(event) => {
-            event.preventDefault();
+        <DropdownMenuItem 
+          onClick={(e) => {
+            e.preventDefault();
             signOut().catch(console.error);
           }}
           className="text-red-600 cursor-pointer"
         >
           Sign out
-          {/* <LogOut className="w-4 h-4 ml-2 " /> */}
+          <LogOut className="w-4 h-4 ml-2 " />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
